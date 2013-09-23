@@ -26,7 +26,7 @@ class Translator implements TranslatorInterface
      * @var array
      * 
      */
-    protected $messages = [];
+    protected $messages = array();
 
     /**
      * 
@@ -52,7 +52,7 @@ class Translator implements TranslatorInterface
      * @return string The translated string.
      * 
      */
-    public function translate($key, array $tokens_values = [])
+    public function translate($key, array $tokens_values = array())
     {
         if (! isset($this->messages[$key])) {
             return $key;

@@ -36,7 +36,7 @@ class RuleLocator
      * @var array
      * 
      */
-    protected $converted = [];
+    protected $converted = array();
     
     /**
      * 
@@ -46,7 +46,7 @@ class RuleLocator
      * rule name and the value is a callable that returns a rule object.
      * 
      */
-    public function __construct(array $registry = [])
+    public function __construct(array $registry = array())
     {
         $this->merge($registry);
     }
@@ -60,7 +60,7 @@ class RuleLocator
      * rule name and the value is a callable that returns a rule object.
      * 
      */
-    public function merge(array $registry = [])
+    public function merge(array $registry = array())
     {
         foreach ($registry as $name => $spec) {
             $this->set($name, $spec);

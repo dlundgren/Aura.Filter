@@ -69,7 +69,7 @@ abstract class AbstractRule implements RuleInterface
      * @var array
      * 
      */
-    protected $params = [];
+    protected $params = array();
     
     /**
      * 

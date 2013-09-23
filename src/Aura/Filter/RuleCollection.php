@@ -70,7 +70,7 @@ class RuleCollection
      * @var array
      * 
      */
-    protected $rules = [];
+    protected $rules = array();
 
     /**
      * 
@@ -79,7 +79,7 @@ class RuleCollection
      * @var array
      * 
      */
-    protected $messages = [];
+    protected $messages = array();
 
     /**
      * 
@@ -88,7 +88,7 @@ class RuleCollection
      * @var array
      * 
      */
-    protected $hardrule = [];
+    protected $hardrule = array();
 
     /**
      * 
@@ -97,7 +97,7 @@ class RuleCollection
      * @var array
      * 
      */
-    protected $field_messages = [];
+    protected $field_messages = array();
     
     /**
      *
@@ -333,8 +333,8 @@ class RuleCollection
         }
         
         // reset messages and hard-rule notices
-        $this->messages = [];
-        $this->hardrule = [];
+        $this->messages = array();
+        $this->hardrule = array();
 
         foreach ($this->rules as $i => &$info) {
 
@@ -441,7 +441,7 @@ class RuleCollection
             return $this->messages[$field];
         }
         
-        return [];
+        return array();
     }
     
     /**
@@ -458,7 +458,7 @@ class RuleCollection
     public function addMessages($field, $messages)
     {
         if (! $this->messages[$field]) {
-            $this->messages[$field] = [];
+            $this->messages[$field] = array();
         }
         
         $this->messages[$field] = array_merge(
