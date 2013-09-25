@@ -276,13 +276,13 @@ class RuleCollection
      */
     protected function addRule($field, $method, $name, $params, $type)
     {
-        $this->rules[] = [
+        $this->rules[] = array(
             'field'     => $field,
             'method'    => $method,
             'name'      => $name,
             'params'    => $params,
             'type'      => $type,
-        ];
+        );
     }
 
     /**
@@ -359,7 +359,7 @@ class RuleCollection
                 $rule = $this->rule_locator->get($info['name']);
                 $rule->prep($data, $field);
                 $params = $info['params'];
-                $passed = call_user_func_array([$rule, $method], $params);
+                $passed = call_user_func_array(array($rule, $method), $params);
             }
 
             if (! $passed) {
@@ -410,7 +410,7 @@ class RuleCollection
         // do we have a field-specific message at this point?
         if ($message) {
             // yes; note that we set this as the only element in an array.
-            $this->messages[$field] = [$this->translator->translate($message)];
+            $this->messages[$field] = array($this->translator->translate($message));
             return;
         }
         
@@ -491,12 +491,12 @@ class RuleCollection
         
         // set up the field name and data
         $field = 'field';
-        $data = (object) [$field => $value];
+        $data = (object) array($field => $value);
         
         // prep and call the rule object
         $rule = $this->rule_locator->get($name);
         $rule->prep($data, $field);
-        $passed = call_user_func_array([$rule, $method], $params);
+        $passed = call_user_func_array(array($rule, $method), $params);
         
         // retain the value and return the pass/fail result
         $value = $rule->getValue();

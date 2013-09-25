@@ -22,18 +22,18 @@ abstract class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     
     public function testGetMessage()
     {
-        $rule = $this->newRule(['foo' => 'bar'], 'foo');
+        $rule = $this->newRule(array('foo' => 'bar'), 'foo');
         $actual = $rule->getMessage();
         $this->assertSame($this->expect_message, $actual);
     }
     
     public function testGetAndSetValue()
     {
-        $data = [
+        $data = array(
             'foo' => 'bar',
             'baz' => 'dib',
             'zim' => 'gir',
-        ];
+        );
         
         // get the field
         $rule = $this->newRule($data, 'foo');
@@ -113,9 +113,9 @@ abstract class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     
     public function getPrep($value)
     {
-        $data  = ['field' => $value];
+        $data  = array('field' => $value);
         $field = 'field';
-        return [$data, $field];
+        return array($data, $field);
     }
     
     // RULE INVOCATIONS ======================================================
@@ -153,21 +153,21 @@ abstract class AbstractRuleTest extends \PHPUnit_Framework_TestCase
     
     public function providerIsBlankOr()
     {
-        return array_merge($this->providerIs(), [
-            [null],
-            [''],
-            ["\r \t \n"],
-        ]);
+        return array_merge($this->providerIs(), array(
+            array(null),
+            array(''),
+            array("\r \t \n"),
+        ));
     }
     
     abstract public function providerFix();
     
     public function providerFixBlankOr()
     {
-        return array_merge($this->providerFix(), [
-            [null, true, null],
-            ['', true, null],
-            ["\r \t \n", true, null],
-        ]);
+        return array_merge($this->providerFix(), array(
+            array(null, true, null),
+            array('', true, null),
+            array("\r \t \n", true, null),
+        ));
     }
 }

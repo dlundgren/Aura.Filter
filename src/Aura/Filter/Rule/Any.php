@@ -41,13 +41,13 @@ class Any extends AbstractRule
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_ANY',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_ANY',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_ANY',
         'failure_fix'           => 'FILTER_RULE_FAILURE_FIX_ANY',
         'failure_fix_blank_or'  => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_ANY',
-    ];
+    );
     
     /**
      * 
@@ -84,7 +84,7 @@ class Any extends AbstractRule
             $rule->prep($this->data, $this->field);
             
             // does the data pass the rule?
-            $pass = call_user_func_array([$rule, 'validate'], $args);
+            $pass = call_user_func_array(array($rule, 'validate'), $args);
             if ($pass) {
                 return true;
             }

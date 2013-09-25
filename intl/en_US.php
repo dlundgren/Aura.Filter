@@ -2,7 +2,7 @@
 return array(
     "fallback" => null,
     "formatter" => "basic",
-    "messages" => [
+    "messages" => array(
     
         "FILTER_RULE_FAILURE_IS_ALNUM" => "Please use only alphanumeric characters.",
         "FILTER_RULE_FAILURE_IS_NOT_ALNUM" => "Please do not use only alphanumeric characters.",
@@ -205,5 +205,5 @@ return array(
         "FILTER_RULE_FAILURE_IS_BLANK_OR_ISBN" => "Please leave blank or use valid ISBN.",
         "FILTER_RULE_FAILURE_FIX_ISBN" => "Could not sanitize to valid ISBN.",
         "FILTER_RULE_FAILURE_FIX_BLANK_OR_ISBN" => "Could not sanitize to blank or valid ISBN.",
-    ],
+    ),
 );

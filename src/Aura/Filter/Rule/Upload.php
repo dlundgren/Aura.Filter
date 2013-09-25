@@ -30,7 +30,7 @@ class Upload extends AbstractRule
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_UPLOAD',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_UPLOAD',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_UPLOAD',
@@ -46,7 +46,7 @@ class Upload extends AbstractRule
         'err_unknown'           => 'FILTER_RULE_ERR_UPLOAD_UNKNOWN',
         'err_is_uploaded_file'  => 'FILTER_RULE_ERR_UPLOAD_IS_UPLOADED_FILE',
         'err_array_keys'        => 'FILTER_RULE_ERR_UPLOAD_ARRAY_KEYS',
-    ];
+    );
 
     /**
      * 

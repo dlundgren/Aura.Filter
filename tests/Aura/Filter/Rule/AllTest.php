@@ -8,18 +8,18 @@ class AllTest extends AbstractRuleTest
 {
     protected $expect_message = 'FILTER_RULE_FAILURE_IS_ALL';
     
-    protected $list = [
-        ['alnum'],
-        ['strlen', 4]
-    ];
+    protected $list = array(
+        array('alnum'),
+        array('strlen', 4)
+    );
     
     protected function newRule($data, $field)
     {
         $rule = parent::newRule($data, $field);
-        $rule->setRuleLocator(new RuleLocator([
+        $rule->setRuleLocator(new RuleLocator(array(
             'alnum' => function () { return new \Aura\Filter\Rule\Alnum; },
             'strlen' => function () { return new \Aura\Filter\Rule\Strlen; },
-        ]));
+        )));
         return $rule;
     }
     
@@ -50,34 +50,34 @@ class AllTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            ['0123'],
-            ['abcd'],
-            ['01ab'],
-        ];
+        return array(
+            array('0123'),
+            array('abcd'),
+            array('01ab'),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            ['1234abcd'],
-            ["Seven 8 nine"],
-            ["non:alpha-numeric's"],
-            [[]],
-            ["something @ somewhere.edu"],
-            ["the-name.for!you"],
-            ["non:alpha@example.com"],
-            [""],
-            ["\t\n"],
-            [" "],
-        ];
+        return array(
+            array('1234abcd'),
+            array("Seven 8 nine"),
+            array("non:alpha-numeric's"),
+            array(array()),
+            array("something @ somewhere.edu"),
+            array("the-name.for!you"),
+            array("non:alpha@example.com"),
+            array(""),
+            array("\t\n"),
+            array(" "),
+        );
     }
     
     public function providerFix()
     {
         // can't fix on "all" rule combinations
-        return [
-            ['$#% abc () 123 ,./', false, '$#% abc () 123 ,./'],
-        ];
+        return array(
+            array('$#% abc () 123 ,./', false, '$#% abc () 123 ,./'),
+        );
     }
 }

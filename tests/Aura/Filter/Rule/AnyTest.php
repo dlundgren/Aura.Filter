@@ -8,20 +8,20 @@ class AnyTest extends AbstractRuleTest
 {
     protected $expect_message = 'FILTER_RULE_FAILURE_IS_ANY';
     
-    protected $list = [
+    protected $list = array(
         // alphanumeric
-        ['alnum'],
+        array('alnum'),
         // only @ signs
-        ['regex', '/^[@]+$/']
-    ];
+        array('regex', '/^[@]+$/')
+    );
     
     protected function newRule($data, $field)
     {
         $rule = parent::newRule($data, $field);
-        $rule->setRuleLocator(new RuleLocator([
+        $rule->setRuleLocator(new RuleLocator(array(
             'alnum' => function () { return new \Aura\Filter\Rule\Alnum; },
             'regex' => function () { return new \Aura\Filter\Rule\Regex; },
-        ]));
+        )));
         return $rule;
     }
     
@@ -52,44 +52,44 @@ class AnyTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            [0],
-            [1],
-            [2],
-            [5],
-            ['0'],
-            ['1'],
-            ['2'],
-            ['5'],
-            ['alphaonly'],
-            ['AlphaOnLy'],
-            ['someThing8else'],
-            ["@@@@@"],
-        ];
+        return array(
+            array(0),
+            array(1),
+            array(2),
+            array(5),
+            array('0'),
+            array('1'),
+            array('2'),
+            array('5'),
+            array('alphaonly'),
+            array('AlphaOnLy'),
+            array('someThing8else'),
+            array("@@@@@"),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [""],
-            [' '],
-            ["Seven 8 nine"],
-            ["non:alpha-numeric's"],
-            [[]],
-            ["something @ somewhere.edu"],
-            ["the-name.for!you"],
-            ["non:alpha@example.com"],
-            [""],
-            ["\t\n"],
-            [" "],
-        ];
+        return array(
+            array(""),
+            array(' '),
+            array("Seven 8 nine"),
+            array("non:alpha-numeric's"),
+            array(array()),
+            array("something @ somewhere.edu"),
+            array("the-name.for!you"),
+            array("non:alpha@example.com"),
+            array(""),
+            array("\t\n"),
+            array(" "),
+        );
     }
     
     public function providerFix()
     {
         // can't fix on "any" rule combinations
-        return [
-            ['$#% abc () 123 ,./', false, '$#% abc () 123 ,./'],
-        ];
+        return array(
+            array('$#% abc () 123 ,./', false, '$#% abc () 123 ,./'),
+        );
     }
 }

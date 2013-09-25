@@ -36,33 +36,33 @@ class MaxTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            [1],
-            [2],
-            [3],
-        ];
+        return array(
+            array(1),
+            array(2),
+            array(3),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [array()],
-            [4],
-            [5],
-            [6],
-        ];
+        return array(
+            array(array()),
+            array(4),
+            array(5),
+            array(6),
+        );
     }
     
     public function providerFix()
     {
-        return [
-            [array(), false, array()],
-            [1, true, 1],
-            [2, true, 2],
-            [3, true, 3],
-            [4, true, 3],
-            [5, true, 3],
-            [6, true, 3],
-        ];
+        return array(
+            array(array(), false, array()),
+            array(1, true, 1),
+            array(2, true, 2),
+            array(3, true, 3),
+            array(4, true, 3),
+            array(5, true, 3),
+            array(6, true, 3),
+        );
     }
 }

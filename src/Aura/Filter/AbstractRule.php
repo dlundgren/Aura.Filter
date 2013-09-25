@@ -44,13 +44,13 @@ abstract class AbstractRule implements RuleInterface
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => '',
         'failure_is_not'        => '',
         'failure_is_blank_or'   => '',
         'failure_fix'           => '',
         'failure_fix_blank_or'  => '',
-    ];
+    );
 
     /**
      * 
@@ -184,7 +184,7 @@ abstract class AbstractRule implements RuleInterface
     public function is()
     {
         $this->setMessageKey('failure_is');
-        return call_user_func_array([$this, 'validate'], func_get_args());
+        return call_user_func_array(array($this, 'validate'), func_get_args());
     }
 
     /**
@@ -197,7 +197,7 @@ abstract class AbstractRule implements RuleInterface
     public function isNot()
     {
         $this->setMessageKey('failure_is_not');
-        return ! call_user_func_array([$this, 'validate'], func_get_args());
+        return ! call_user_func_array(array($this, 'validate'), func_get_args());
     }
 
     /**
@@ -213,7 +213,7 @@ abstract class AbstractRule implements RuleInterface
         if ($this->isBlank()) {
             return true;
         } else {
-            return call_user_func_array([$this, 'validate'], func_get_args());
+            return call_user_func_array(array($this, 'validate'), func_get_args());
         }
     }
 
@@ -227,7 +227,7 @@ abstract class AbstractRule implements RuleInterface
     public function fix()
     {
         $this->setMessageKey('failure_fix');
-        return call_user_func_array([$this, 'sanitize'], func_get_args());
+        return call_user_func_array(array($this, 'sanitize'), func_get_args());
     }
 
     /**
@@ -248,7 +248,7 @@ abstract class AbstractRule implements RuleInterface
             return true;
         }
 
-        return call_user_func_array([$this, 'sanitize'], func_get_args());
+        return call_user_func_array(array($this, 'sanitize'), func_get_args());
     }
 
     /**

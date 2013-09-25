@@ -78,8 +78,11 @@ class RuleLocator
      * @return void
      * 
      */
-    public function set($name, callable $spec)
+    public function set($name, $spec)
     {
+        if (!is_callable($spec)) {
+            throw new \InvalidArgumentException('$spec expected callable, got ' . gettype($spec));
+        }
         $this->registry[$name] = $spec;
         $this->converted[$name] = false;
     }

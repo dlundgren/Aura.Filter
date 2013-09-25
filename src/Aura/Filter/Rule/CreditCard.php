@@ -30,13 +30,13 @@ class CreditCard extends AbstractRule
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_CREDIT_CARD',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_CREDIT_CARD',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_CREDIT_CARD',
         'failure_fix'           => 'FILTER_RULE_FAILURE_FIX_CREDIT_CARD',
         'failure_fix_blank_or'  => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_CREDIT_CARD',
-    ];
+    );
 
     /**
      * 
@@ -48,7 +48,7 @@ class CreditCard extends AbstractRule
     public function validate()
     {
         // get the value; remove spaces, dashes, and dots
-        $value = str_replace([' ', '-', '.'], '', (string) $this->getValue());
+        $value = str_replace(array(' ', '-', '.'), '', (string) $this->getValue());
 
         // is it composed only of digits?
         if (! ctype_digit($value)) {
@@ -56,10 +56,10 @@ class CreditCard extends AbstractRule
         }
 
         // luhn mod-10 algorithm: https://gist.github.com/1287893
-        $sumTable = [
-            [0,1,2,3,4,5,6,7,8,9],
-            [0,2,4,6,8,1,3,5,7,9],
-        ];
+        $sumTable = array(
+            array(0,1,2,3,4,5,6,7,8,9),
+            array(0,2,4,6,8,1,3,5,7,9),
+        );
 
         $sum = 0;
         $flip = 0;

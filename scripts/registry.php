@@ -1,5 +1,5 @@
 <?php
-return [
+return array(
     'alnum'                 => function() { return new \Aura\Filter\Rule\Alnum; },
     'alpha'                 => function() { return new \Aura\Filter\Rule\Alpha; },
     'between'               => function() { return new \Aura\Filter\Rule\Between; },
@@ -30,4 +30,4 @@ return [
     'url'                   => function() { return new \Aura\Filter\Rule\Url; },
     'word'                  => function() { return new \Aura\Filter\Rule\Word; },
     'isbn'                  => function() { return new \Aura\Filter\Rule\Isbn; },
-];
+);

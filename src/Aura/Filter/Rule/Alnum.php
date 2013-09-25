@@ -30,13 +30,13 @@ class Alnum extends AbstractRule
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_ALNUM',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_ALNUM',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_ALNUM',
         'failure_fix'           => 'FILTER_RULE_FAILURE_FIX_ALNUM',
         'failure_fix_blank_or'  => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_ALNUM',
-    ];
+    );
 
     /**
      * 

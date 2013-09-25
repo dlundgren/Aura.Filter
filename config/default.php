@@ -15,7 +15,7 @@ $di->setter['Aura\Filter\Rule\Any']['setRuleLocator'] = $di->lazyNew('Aura\Filte
 $di->params['Aura\Filter\RuleCollection'] = [
     'rule_locator' => $di->lazyNew('Aura\Filter\RuleLocator'),
     'translator' => $di->lazyCall(
-        [$di->lazyGet('intl_translator_locator'), 'get'],
+        array($di->lazyGet('intl_translator_locator'), 'get'),
         'Aura.Filter'
     ),
 ];
@@ -23,7 +23,7 @@ $di->params['Aura\Filter\RuleCollection'] = [
 /**
  * Aura\Filter\RuleLocator
  */
-$di->params['Aura\Filter\RuleLocator']['registry'] = [
+$di->params['Aura\Filter\RuleLocator']['registry'] = array(
     'alnum'                 =>  $di->lazyNew('Aura\Filter\Rule\Alnum'),
     'alpha'                 =>  $di->lazyNew('Aura\Filter\Rule\Alpha'),
     'any'                   =>  $di->lazyNew('Aura\Filter\Rule\Any'),
@@ -56,12 +56,12 @@ $di->params['Aura\Filter\RuleLocator']['registry'] = [
     'url'                   =>  $di->lazyNew('Aura\Filter\Rule\Url'),
     'word'                  =>  $di->lazyNew('Aura\Filter\Rule\Word'),
     'isbn'                  =>  $di->lazyNew('Aura\Filter\Rule\Isbn'),
-];
+);
 
 /**
  * Aura\Intl\PackageLocator
  */
 $di->params['Aura\Intl\PackageLocator']['registry']['Aura.Filter']['en_US'] = $di->lazyCall(
-    [$di->lazyGet('intl_package_factory'), 'newInstance'],
+    array($di->lazyGet('intl_package_factory'), 'newInstance'),
     $di->lazyRequire("$system/package/Aura.Filter/intl/en_US.php")
 );

@@ -31,13 +31,13 @@ class Blank extends AbstractRule
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_BLANK',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_BLANK',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_BLANK',
         'failure_fix'           => 'FILTER_RULE_FAILURE_FIX_BLANK',
         'failure_fix_blank_or'  => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_BLANK',
-    ];
+    );
 
     /**
      * 

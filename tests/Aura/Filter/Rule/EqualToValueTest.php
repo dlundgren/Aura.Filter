@@ -36,30 +36,30 @@ class EqualToValueTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            [1],
-            ['1'],
-            [true],
-        ];
+        return array(
+            array(1),
+            array('1'),
+            array(true),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [0],
-            ['2'],
-            [false],
-        ];
+        return array(
+            array(0),
+            array('2'),
+            array(false),
+        );
     }
     
     public function providerFix()
     {
-        return [
-            [0,         true, '1'],
-            [1,         true, '1'],
-            ['1',       true, '1'],
-            [true,      true, '1'],
-            [false,     true, '1'],
-        ];
+        return array(
+            array(0,         true, '1'),
+            array(1,         true, '1'),
+            array('1',       true, '1'),
+            array(true,      true, '1'),
+            array(false,     true, '1'),
+        );
     }
 }

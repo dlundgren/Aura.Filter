@@ -34,26 +34,26 @@ class MethodTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            [new MockValue],
-        ];
+        return array(
+            array(new MockValue),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [new MockValue],
-            ['not an object'],
-            [''],
-        ];
+        return array(
+            array(new MockValue),
+            array('not an object'),
+            array(''),
+        );
     }
     
     public function providerFix()
     {
         $object = new MockValue;
-        return [
-            [$object, true, $object],
-            ['not an object', false, 'not an object'],
-        ];
+        return array(
+            array($object, true, $object),
+            array('not an object', false, 'not an object'),
+        );
     }
 }

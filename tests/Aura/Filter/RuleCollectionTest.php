@@ -9,12 +9,11 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
     
     protected function setUp()
     {
-        $rule_locator = new RuleLocator([
+        $rule_locator = new RuleLocator(array(
             'alnum'     => function() { return new Rule\Alnum; },
             'alpha'     => function() { return new Rule\Alpha; },
             'between'   => function() { return new Rule\Between; },
             'blank'     => function() { return new Rule\Blank; },
-            'closure'   => function() { return new Rule\Closure; },
             'int'       => function() { return new Rule\Int; },
             'inKeys'    => function() { return new Rule\InKeys; },
             'inValues'  => function() { return new Rule\InValues; },
@@ -24,7 +23,11 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
             'string'    => function() { return new Rule\String; },
             'strlen'    => function() { return new Rule\Strlen; },
             'strlenMin' => function() { return new Rule\StrlenMin; },
-        ]);
+        ));
+
+        if (!version_compare(PHP_VERSION, '5.4.0')) {
+            $rule_locator['closure'] = function() { return new Rule\Closure; };
+        }
         
         $intl = require dirname(dirname(dirname(__DIR__)))
               . DIRECTORY_SEPARATOR . 'intl'
@@ -70,36 +73,36 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
         $this->filter->addHardRule('field2', Filter::IS, 'alpha');
         
         $actual = $this->filter->getRules();
-        $expect = [
-            0 => [
+        $expect = array(
+            0 => array(
                 'field' => 'field1',
                 'method' => 'is',
                 'name' => 'alnum',
-                'params' => [],
+                'params' => array(),
                 'type' => Filter::SOFT_RULE,
-            ],
-            1 => [
+            ),
+            1 => array(
                 'field' => 'field1',
                 'method' => 'is',
                 'name' => 'alpha',
-                'params' => [],
+                'params' => array(),
                 'type' => Filter::HARD_RULE,
-            ],
-            2 => [
+            ),
+            2 => array(
                 'field' => 'field2',
                 'method' => 'is',
                 'name' => 'alnum',
-                'params' => [],
+                'params' => array(),
                 'type' => Filter::SOFT_RULE,
-            ],
-            3 => [
+            ),
+            3 => array(
                 'field' => 'field2',
                 'method' => 'is',
                 'name' => 'alpha',
-                'params' => [],
+                'params' => array(),
                 'type' => Filter::HARD_RULE,
-            ],
-        ];
+            ),
+        );
         
         $this->assertSame($expect, $actual);
     }
@@ -109,7 +112,7 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
         $this->filter->addSoftRule('field', Filter::IS, 'alnum');
         $this->filter->addHardRule('field', Filter::IS, 'strlenMin', 6);
         
-        $data = (object) ['field' => 'foobar'];
+        $data = (object) array('field' => 'foobar');
         $result = $this->filter->values($data);
         $this->assertTrue($result);
         $messages = $this->filter->getMessages();
@@ -128,26 +131,26 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
         $this->filter->addHardRule('field', Filter::IS, 'alnum');
         $this->filter->addHardRule('field', Filter::IS, 'strlenMin', 6);
         
-        $data = (object) ['field' => array()];
+        $data = (object) array('field' => array());
         $result = $this->filter->values($data);
         $this->assertFalse($result);
         
-        $expect = [
-            'field' => [
+        $expect = array(
+            'field' => array(
                 'Please use only alphanumeric characters.',
-            ],
-        ];
+            ),
+        );
 
         $actual = $this->filter->getMessages();
         $this->assertSame($expect, $actual);
         
         $actual = $this->filter->getMessages('field');
-        $expect = [
+        $expect = array(
             'Please use only alphanumeric characters.',
-        ];
+        );
         $this->assertSame($expect, $actual);
         
-        $expect = [];
+        $expect = array();
         $actual = $this->filter->getMessages('no-such-field');
         $this->assertSame($expect, $actual);
     }
@@ -160,20 +163,20 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
         $this->filter->addHardRule('field2', Filter::IS, 'int');
         $this->filter->addHardRule('field2', Filter::FIX, 'int');
         
-        $data = (object) [
+        $data = (object) array(
             'field1' => array(),
             'field2' => 88
-        ];
+        );
         
         $result = $this->filter->values($data);
         $this->assertFalse($result);
         
-        $expect = [
-            'field1' => [
+        $expect = array(
+            'field1' => array(
                 'Please use only alphanumeric characters.',
                 'Please use at least 6 character(s).',
-            ],
-        ];
+            ),
+        );
 
         $actual = $this->filter->getMessages();
         $this->assertSame($expect, $actual);
@@ -185,16 +188,16 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
         $this->filter->addStopRule('field1', Filter::IS, 'strlenMin', 6);
         $this->filter->addHardRule('field2', Filter::IS, 'int');
         
-        $data = (object) ['field1' => array()];
+        $data = (object) array('field1' => array());
         $result = $this->filter->values($data);
         $this->assertFalse($result);
         
-        $expect = [
-            'field1' => [
+        $expect = array(
+            'field1' => array(
                 'Please use only alphanumeric characters.',
                 'Please use at least 6 character(s).',
-            ],
-        ];
+            ),
+        );
 
         $actual = $this->filter->getMessages();
         
@@ -204,7 +207,7 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
     public function testValues_sanitizesInPlace()
     {
         $this->filter->addHardRule('field', Filter::FIX, 'string', 'foo', 'bar');
-        $data = (object) ['field' => 'foo'];
+        $data = (object) array('field' => 'foo');
         $result = $this->filter->values($data);
         $this->assertTrue($result);
         $this->assertSame($data->field, 'bar');
@@ -213,7 +216,7 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
     public function testValues_missingField()
     {
         $this->filter->addHardRule('field', Filter::IS, 'string');
-        $data = (object) ['other_field' => 'foo']; // 'field' is missing
+        $data = (object) array('other_field' => 'foo'); // 'field' is missing
         $result = $this->filter->values($data);
         $this->assertFalse($result);
     }
@@ -221,7 +224,7 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
     public function testValues_arraySanitizesInPlace()
     {
         $this->filter->addHardRule('field', Filter::FIX, 'string', 'foo', 'bar');
-        $data = ['field' => 'foo'];
+        $data = array('field' => 'foo');
         $result = $this->filter->values($data);
         $this->assertTrue($result);
         $this->assertSame($data['field'], 'bar');
@@ -236,19 +239,19 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
         $this->filter->addHardRule('field2', Filter::FIX, 'int');
         $this->filter->useFieldMessage('field1', 'FILTER_FIELD_FAILURE_FIELD1');
         
-        $data = (object) [
+        $data = (object) array(
             'field1' => array(),
             'field2' => 88
-        ];
+        );
         
         $result = $this->filter->values($data);
         $this->assertFalse($result);
         
-        $expect = [
-            'field1' => [
+        $expect = array(
+            'field1' => array(
                 'FILTER_FIELD_FAILURE_FIELD1',
-            ],
-        ];
+            ),
+        );
 
         $actual = $this->filter->getMessages();
         $this->assertSame($expect, $actual);
@@ -256,25 +259,25 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
     
     public function testTranslatedArrayValue()
     {
-        $this->filter->addSoftRule('field1', Filter::IS, 'inValues', ['foo', 'bar', 'baz']);
-        $this->filter->addSoftRule('field2', Filter::IS, 'inKeys', ['foo', 'bar', 'baz']);
+        $this->filter->addSoftRule('field1', Filter::IS, 'inValues', array('foo', 'bar', 'baz'));
+        $this->filter->addSoftRule('field2', Filter::IS, 'inKeys', array('foo', 'bar', 'baz'));
         
-        $data = (object) [
+        $data = (object) array(
             'field1' => 'zim',
             'field2' => 9,
-        ];
+        );
         
         $result = $this->filter->values($data);
         $this->assertFalse($result);
         
-        $expect = [
-            'field1' => [
+        $expect = array(
+            'field1' => array(
                 'Please use one of the following: "foo", "bar", "baz"',
-            ],
-            'field2' => [
+            ),
+            'field2' => array(
                 'Please use one of the following: "0", "1", "2"',
-            ],
-        ];
+            ),
+        );
         $actual = $this->filter->getMessages();
         $this->assertSame($expect, $actual);
     }
@@ -303,23 +306,23 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
         
         $this->filter->addSoftRule('dob', Filter::FIX, 'closure', $closure);
         
-        $data = (object) [
+        $data = (object) array(
             'dob_y' => '1979',
             'dob_m' => '11',
             'dob_d' => '07',
             'dob' => null,
-        ];
+        );
         
         $result = $this->filter->values($data);
         $this->assertTrue($result);
         $this->assertSame('1979-11-07', $data->dob);
         
-        $data = (object) [
+        $data = (object) array(
             'dob_y' => '1979',
             'dob_m' => '02',
             'dob_d' => '29',
             'dob' => null,
-        ];
+        );
         
         $result = $this->filter->values($data);
         $this->assertFalse($result);
@@ -340,10 +343,10 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
         });
         
         // initial data
-        $values = [
+        $values = array(
             'foo' => 'foo_value',
             'bar' => 'bar_value',
-        ];
+        );
         
         // do the values pass all filters?
         $passed = $this->filter->values($values);
@@ -353,16 +356,16 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
         
         // get just 'foo' messages
         $actual = $this->filter->getMessages('foo');
-        $expect = [
+        $expect = array(
             'Foo should be alpha only',
-        ];
+        );
         $this->assertSame($expect, $actual);
         
         // should have changed the values on 'bar'
-        $expect = [
+        $expect = array(
             'foo' => 'foo_value',
             'bar' => 'bar!value',
-        ];
+        );
         $this->assertSame($expect, $values);
         
         // let's make it valid

@@ -18,32 +18,32 @@ class WordTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            ['abc'],
-            ['def'],
-            ['ghi'],
-            ['abc_def'],
-            ['A1s_2Sd'],
-        ];
+        return array(
+            array('abc'),
+            array('def'),
+            array('ghi'),
+            array('abc_def'),
+            array('A1s_2Sd'),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [array()],
-            [''],
-            ['a!'],
-            ['^b'],
-            ['%'],
-            ['ab-db cd-ef'],
-        ];
+        return array(
+            array(array()),
+            array(''),
+            array('a!'),
+            array('^b'),
+            array('%'),
+            array('ab-db cd-ef'),
+        );
     }
     
     public function providerFix()
     {
-        return [
-            [array(), false, array()],
-            ['abc _ 123 - ,./', true, 'abc_123'],
-        ];
+        return array(
+            array(array(), false, array()),
+            array('abc _ 123 - ,./', true, 'abc_123'),
+        );
     }
 }

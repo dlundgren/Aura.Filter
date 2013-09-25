@@ -9,6 +9,11 @@ class ClosureTest extends AbstractRuleTest
     
     protected function setUp()
     {
+        // Testing if we are dealing with version 5.3.0 or higher
+        if (!version_compare(PHP_VERSION, '5.4.0', '>=')) {
+            $this->markTestSkipped('Invalid PHP version, unable to run tests.');
+        }
+
         parent::setUp();
         
         // validates a value as an actual boolean
@@ -51,26 +56,26 @@ class ClosureTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            [true],
-            [false],
-        ];
+        return array(
+            array(true),
+            array(false),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [0],
-            [1],
-            [null],
-        ];
+        return array(
+            array(0),
+            array(1),
+            array(null),
+        );
     }
     
     public function providerFix()
     {
-        return [
-            [0, true, false],
-            [1, true, true],
-        ];
+        return array(
+            array(0, true, false),
+            array(1, true, true),
+        );
     }
 }

@@ -2,7 +2,7 @@
 return array(
     "fallback" => null,
     "formatter" => "basic",
-    "messages" => [
+    "messages" => array(
     
         "FILTER_RULE_FAILURE_IS_ALNUM" => "Bitte nur alphanumerische Zeichen verwenden.",
         "FILTER_RULE_FAILURE_IS_NOT_ALNUM" => "Bitte nicht nur alphanumerische Zeichen verwenden.",
@@ -205,5 +205,5 @@ return array(
         "FILTER_RULE_FAILURE_IS_BLANK_OR_ISBN" => "Bitte frei lassen oder gültige ISBN angeben.",
         "FILTER_RULE_FAILURE_FIX_ISBN" => "Umwandlung in eine gültige ISBN nicht möglich.",
         "FILTER_RULE_FAILURE_FIX_BLANK_OR_ISBN" => "Umwandlung in einen leeren Wert oder eine gültige ISBN nicht möglich.",
-    ],
+    ),
 );

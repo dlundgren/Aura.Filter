@@ -30,13 +30,13 @@ class Isbn extends AbstractRule
      * @var array
      *
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'           => 'FILTER_RULE_FAILURE_IS_ISBN',
         'failure_is_not'       => 'FILTER_RULE_FAILURE_IS_NOT_ISBN',
         'failure_is_blank_or'  => 'FILTER_RULE_FAILURE_IS_BLANK_OR_ISBN',
         'failure_fix'          => 'FILTER_RULE_FAILURE_FIX_ISBN',
         'failure_fix_blank_or' => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_ISBN',
-    ];
+    );
 
     /**
      *
@@ -72,7 +72,7 @@ class Isbn extends AbstractRule
     public function sanitize()
     {
         $value = $this->getValue();
-        $value = preg_replace('/(?:(?!([0-9|X$])).)*/', '', $value);
+        $value = preg_replace('/(?:(?!(array(0-9|X$])).)*/', '', $value);
 
         if (preg_match('/^[0-9]{10,13}$|^[0-9]{9}X$/', $value) == 1) {
             $this->setValue($value);

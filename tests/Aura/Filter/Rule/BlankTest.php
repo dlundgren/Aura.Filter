@@ -9,38 +9,38 @@ class BlankTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            [""],
-            [" "],
-            ["\t"],
-            ["\n"],
-            ["\r"],
-            [" \t \n \r "],
-        ];
+        return array(
+            array(""),
+            array(" "),
+            array("\t"),
+            array("\n"),
+            array("\r"),
+            array(" \t \n \r "),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [0],
-            [1],
-            ['0'],
-            ['1'],
-            ["Seven 8 nine"],
-            ["non:alpha-numeric's"],
-            ['someThing8else'],
-        ];
+        return array(
+            array(0),
+            array(1),
+            array('0'),
+            array('1'),
+            array("Seven 8 nine"),
+            array("non:alpha-numeric's"),
+            array('someThing8else'),
+        );
     }
     
     public function providerFix()
     {
-        return [
-            ["",                true, null],
-            [" ",               true, null],
-            ["\t",              true, null],
-            ["\n",              true, null],
-            ["\r",              true, null],
-            [" \t \n \r ",      true, null],
-        ];
+        return array(
+            array("",                true, null),
+            array(" ",               true, null),
+            array("\t",              true, null),
+            array("\n",              true, null),
+            array("\r",              true, null),
+            array(" \t \n \r ",      true, null),
+        );
     }
 }

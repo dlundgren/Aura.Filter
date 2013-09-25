@@ -7,13 +7,13 @@ class InKeysTest extends AbstractRuleTest
 {
     protected $expect_message = 'FILTER_RULE_FAILURE_IS_IN_KEYS';
     
-    protected $opts = [
+    protected $opts = array(
         0      => 'val0',
         1      => 'val1',
         'key0' => 'val3',
         'key1' => 'val4',
         'key2' => 'val5'
-    ];
+    );
     
     public function ruleIs($rule)
     {
@@ -42,34 +42,34 @@ class InKeysTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            [0],
-            [1],
-            ['key0'],
-            ['key1'],
-            ['key2'],
-        ];
+        return array(
+            array(0),
+            array(1),
+            array('key0'),
+            array('key1'),
+            array('key2'),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [null],
-            [false],
-            [''],
-            [1.2],
-            [3],
-            [4],
-            ['a'],
-            ['b'],
-            ['c'],
-        ];
+        return array(
+            array(null),
+            array(false),
+            array(''),
+            array(1.2),
+            array(3),
+            array(4),
+            array('a'),
+            array('b'),
+            array('c'),
+        );
     }
     
     public function providerFix()
     {
-        return [
-            ['no-good', false, 'no-good'], // cannot fix
-        ];
+        return array(
+            array('no-good', false, 'no-good'), // cannot fix
+        );
     }
 }

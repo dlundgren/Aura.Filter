@@ -30,13 +30,13 @@ class Trim extends AbstractRule
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_TRIM',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_TRIM',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_TRIM',
         'failure_fix'           => 'FILTER_RULE_FAILURE_FIX_TRIM',
         'failure_fix_blank_or'  => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_TRIM',
-    ];
+    );
 
     /**
      * 

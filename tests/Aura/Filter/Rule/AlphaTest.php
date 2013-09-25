@@ -9,36 +9,36 @@ class AlphaTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            ['alphaonly'],
-            ['AlphaOnly'],
-        ];
+        return array(
+            array('alphaonly'),
+            array('AlphaOnly'),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [' '],
-            [''],
-            [0],
-            [1],
-            [2],
-            [5],
-            ['0'],
-            ['1'],
-            ['2'],
-            ['5'],
-            ["Seven 8 nine"],
-            ["non:alpha-numeric's"],
-            ['someThing8else'],
-            [[]],
-        ];
+        return array(
+            array(' '),
+            array(''),
+            array(0),
+            array(1),
+            array(2),
+            array(5),
+            array('0'),
+            array('1'),
+            array('2'),
+            array('5'),
+            array("Seven 8 nine"),
+            array("non:alpha-numeric's"),
+            array('someThing8else'),
+            array(array()),
+        );
     }
     
     public function providerFix()
     {
-        return [
-            ['^&* abc 123 ,./', true, 'abc'],
-        ];
+        return array(
+            array('^&* abc 123 ,./', true, 'abc'),
+        );
     }
 }

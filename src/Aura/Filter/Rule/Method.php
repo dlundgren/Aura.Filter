@@ -31,13 +31,13 @@ class Method extends AbstractRule
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_METHOD',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_METHOD',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_METHOD',
         'failure_fix'           => 'FILTER_RULE_FAILURE_FIX_METHOD',
         'failure_fix_blank_or'  => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_METHOD',
-    ];
+    );
 
     /**
      * 
@@ -86,7 +86,7 @@ class Method extends AbstractRule
         $object = $this->getValue();
         $method = array_shift($args);
         return is_object($object)
-            && is_callable([$object, $method])
-            && call_user_func_array([$object, $method], $args);
+            && is_callable(array($object, $method))
+            && call_user_func_array(array($object, $method), $args);
     }
 }

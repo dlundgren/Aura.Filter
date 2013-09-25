@@ -36,30 +36,30 @@ class StrlenMaxTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            ['a'],
-            ['ab'],
-            ['abc'],
-        ];
+        return array(
+            array('a'),
+            array('ab'),
+            array('abc'),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [array()],
-            ['abcd'],
-            ['abcdefg'],
-        ];
+        return array(
+            array(array()),
+            array('abcd'),
+            array('abcdefg'),
+        );
     }
     
     public function providerFix()
     {
-        return [
-            [array(), false, array()],
-            ['a',       true, 'a'],
-            ['abc',     true, 'abc'],
-            ['abcd',    true, 'abc'],
-            ['abcdefg', true, 'abc'],
-        ];
+        return array(
+            array(array(), false, array()),
+            array('a',       true, 'a'),
+            array('abc',     true, 'abc'),
+            array('abcd',    true, 'abc'),
+            array('abcdefg', true, 'abc'),
+        );
     }
 }

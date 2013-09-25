@@ -30,13 +30,13 @@ class InKeys extends AbstractRule
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_IN_KEYS',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_IN_KEYS',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_IN_KEYS',
         'failure_fix'           => 'FILTER_RULE_FAILURE_FIX_IN_KEYS',
         'failure_fix_blank_or'  => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_IN_KEYS',
-    ];
+    );
 
     /**
      * 
@@ -53,10 +53,10 @@ class InKeys extends AbstractRule
      */
     public function validate(array $array)
     {
-        $this->setParams([
+        $this->setParams(array(
             'array' => $array,
             'keys' => array_keys($array)
-        ]);
+        ));
         
         $value = $this->getValue();
         if (! is_string($value) && ! is_int($value)) {

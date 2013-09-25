@@ -27,7 +27,7 @@ class WiringTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($filter->values($object));
         $actual = $filter->getMessages();
         $expect = [
-            'foo' => [
+            'foo' => array(
                 'This field did not pass any of the sub-rules.',
             ],
         ];

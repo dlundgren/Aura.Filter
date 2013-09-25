@@ -30,13 +30,13 @@ class Locale extends AbstractRule
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_LOCALE',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_LOCALE',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_LOCALE',
         'failure_fix'           => 'FILTER_RULE_FAILURE_FIX_LOCALE',
         'failure_fix_blank_or'  => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_LOCALE',
-    ];
+    );
 
     /**
      * 
@@ -45,7 +45,7 @@ class Locale extends AbstractRule
      * @var array
      * 
      */
-    protected $codes = [
+    protected $codes = array(
         'af_ZA', 'am_ET', 'be_BY', 'bg_BG', 'ca_ES', 'cs_CZ', 'da_DK',
         'de_AT', 'de_CH', 'de_DE', 'el_GR', 'en_AU', 'en_CA', 'en_GB',
         'en_IE', 'en_NZ', 'en_US', 'es_ES', 'et_EE', 'eu_ES', 'fi_FI',
@@ -54,7 +54,7 @@ class Locale extends AbstractRule
         'ko_KR', 'lt_LT', 'nl_BE', 'nl_NL', 'no_NO', 'pl_PL', 'pt_BR',
         'pt_PT', 'ro_RO', 'ru_RU', 'sk_SK', 'sl_SI', 'sr_YU', 'sv_SE',
         'tr_TR', 'uk_UA', 'zh_CN', 'zh_HK', 'zh_TW',
-    ];
+    );
 
     /**
      * 

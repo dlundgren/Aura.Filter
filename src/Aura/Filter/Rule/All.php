@@ -40,13 +40,13 @@ class All extends AbstractRule
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_ALL',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_ALL',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_ALL',
         'failure_fix'           => 'FILTER_RULE_FAILURE_FIX_ALL',
         'failure_fix_blank_or'  => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_ALL',
-    ];
+    );
     
     /**
      * 
@@ -83,7 +83,7 @@ class All extends AbstractRule
             $rule->prep($this->data, $this->field);
             
             // does the data pass the rule?
-            $pass = call_user_func_array([$rule, 'validate'], $args);
+            $pass = call_user_func_array(array($rule, 'validate'), $args);
             if (! $pass) {
                 return false;
             }

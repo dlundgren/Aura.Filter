@@ -19,28 +19,28 @@ class StringTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            [12345],
-            [123.45],
-            [true],
-            [false],
-            ['string'],
-        ];
+        return array(
+            array(12345),
+            array(123.45),
+            array(true),
+            array(false),
+            array('string'),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [array()],
-            [new \StdClass],
-        ];
+        return array(
+            array(array()),
+            array(new \StdClass),
+        );
     }
     
     public function providerFix()
     {
-        return [
-            ['abc 123 ,./', true, 'abc@123@,./'],
-            [12345, true, '12345'],
-        ];
+        return array(
+            array('abc 123 ,./', true, 'abc@123@,./'),
+            array(12345, true, '12345'),
+        );
     }
 }

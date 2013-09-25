@@ -5,13 +5,13 @@ use Aura\Filter\AbstractRule;
 
 class Hex extends AbstractRule
 {
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_HEX',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_HEX',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_HEX',
         'failure_fix'           => 'FILTER_RULE_FAILURE_FIX_HEX',
         'failure_fix_blank_or'  => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_HEX',
-    ];
+    );
     
     public function validate($max = null)
     {

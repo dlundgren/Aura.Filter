@@ -36,29 +36,29 @@ class StrlenMinTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            ['abcd'],
-            ['efghijkl'],
-        ];
+        return array(
+            array('abcd'),
+            array('efghijkl'),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [array()],
-            ['a'],
-            ['ab'],
-            ['abc'],
-        ];
+        return array(
+            array(array()),
+            array('a'),
+            array('ab'),
+            array('abc'),
+        );
     }
     
     public function providerFix()
     {
-        return [
-            [array(), false, array()],
-            ['a',       true, 'a   '],
-            ['abcd',    true, 'abcd'],
-            ['abcdefg', true, 'abcdefg'],
-        ];
+        return array(
+            array(array(), false, array()),
+            array('a',       true, 'a   '),
+            array('abcd',    true, 'abcd'),
+            array('abcdefg', true, 'abcdefg'),
+        );
     }
 }

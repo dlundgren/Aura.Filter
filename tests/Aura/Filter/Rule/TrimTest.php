@@ -9,24 +9,24 @@ class TrimTest extends AbstractRuleTest
     
     public function providerIs()
     {
-        return [
-            ['abc'],
-        ];
+        return array(
+            array('abc'),
+        );
     }
     
     public function providerIsNot()
     {
-        return [
-            [array()],
-            [' abc '],
-        ];
+        return array(
+            array(array()),
+            array(' abc '),
+        );
     }
     
     public function providerFix()
     {
-        return [
-            [array(), false, array()],
-            [' abc ', true, 'abc'],
-        ];
+        return array(
+            array(array(), false, array()),
+            array(' abc ', true, 'abc'),
+        );
     }
 }

@@ -31,13 +31,13 @@ class EqualToValue extends AbstractRule
      * @var array
      * 
      */
-    protected $message_map = [
+    protected $message_map = array(
         'failure_is'            => 'FILTER_RULE_FAILURE_IS_EQUAL_TO_VALUE',
         'failure_is_not'        => 'FILTER_RULE_FAILURE_IS_NOT_EQUAL_TO_VALUE',
         'failure_is_blank_or'   => 'FILTER_RULE_FAILURE_IS_BLANK_OR_EQUAL_TO_VALUE',
         'failure_fix'           => 'FILTER_RULE_FAILURE_FIX_EQUAL_TO_VALUE',
         'failure_fix_blank_or'  => 'FILTER_RULE_FAILURE_FIX_BLANK_OR_EQUAL_TO_VALUE',
-    ];
+    );
 
     /**
      * 
