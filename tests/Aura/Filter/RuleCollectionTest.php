@@ -9,7 +9,7 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
     
     protected function setUp()
     {
-        $rule_locator = new RuleLocator(array(
+        $rules = array(
             'alnum'     => function() { return new Rule\Alnum; },
             'alpha'     => function() { return new Rule\Alpha; },
             'between'   => function() { return new Rule\Between; },
@@ -23,11 +23,13 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
             'string'    => function() { return new Rule\String; },
             'strlen'    => function() { return new Rule\Strlen; },
             'strlenMin' => function() { return new Rule\StrlenMin; },
-        ));
+        );
 
-        if (!version_compare(PHP_VERSION, '5.4.0')) {
-            $rule_locator['closure'] = function() { return new Rule\Closure; };
+        if (!version_compare(PHP_VERSION, '5.4.0', '>=')) {
+            $rules['closure'] = function() { return new Rule\Closure; };
         }
+
+        $rule_locator = new RuleLocator($rules);
         
         $intl = require dirname(dirname(dirname(__DIR__)))
               . DIRECTORY_SEPARATOR . 'intl'
@@ -284,6 +286,9 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
     
     public function testRulesOnVirtualField()
     {
+        if (!version_compare(PHP_VERSION, '5.4.0', '>=')) {
+            $this->markTestSkipped('PHP version < 5.4, unable to run test.');
+        }
         $closure = function () {
             
             $check = checkdate(

@@ -11,7 +11,7 @@ class ClosureTest extends AbstractRuleTest
     {
         // Testing if we are dealing with version 5.3.0 or higher
         if (!version_compare(PHP_VERSION, '5.4.0', '>=')) {
-            $this->markTestSkipped('Invalid PHP version, unable to run tests.');
+            $this->markTestSkipped('PHP version < 5.4, unable to run tests.');
         }
 
         parent::setUp();

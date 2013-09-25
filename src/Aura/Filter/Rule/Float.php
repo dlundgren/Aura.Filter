@@ -101,7 +101,7 @@ class Float extends AbstractRule
         $value = preg_replace('/[\.-]{2,}/', '.', $value);
 
         // remove all decimals without a digit or minus next to them
-        $value = preg_replace('/(array(^0-9-]\.[^0-9])/', '', $value);
+        $value = preg_replace('/([^0-9-]\.[^0-9])/', '', $value);
 
         // remove all chars except digit, decimal, and minus
         $value = preg_replace('/[^0-9\.-]/', '', $value);

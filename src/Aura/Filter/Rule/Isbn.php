@@ -72,7 +72,7 @@ class Isbn extends AbstractRule
     public function sanitize()
     {
         $value = $this->getValue();
-        $value = preg_replace('/(?:(?!(array(0-9|X$])).)*/', '', $value);
+        $value = preg_replace('/(?:(?!([0-9|X$])).)*/', '', $value);
 
         if (preg_match('/^[0-9]{10,13}$|^[0-9]{9}X$/', $value) == 1) {
             $this->setValue($value);
